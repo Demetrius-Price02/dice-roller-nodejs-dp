@@ -41,6 +41,13 @@ app.get('/2plus2', (request, response) => {
 	response.send('4')
 })
 
+// Return rnadom number between 1 and 6.
+app.get('/d6', (request, response) => {
+	console.log('Calling "/d6" on the Node.js server.')
+	response.type('text/plain')
+	response.send('5')
+})
+
 // Add x and y which are both passed in on the URL. 
 app.get('/add-two-integers', (request, response) => {
 	console.log('Calling "/add-two-integers" on the Node.js server.')
