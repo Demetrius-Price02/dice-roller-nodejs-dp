@@ -44,15 +44,15 @@ app.get('/2plus2', (request, response) => {
 // Return rnadom number between 1 and 6.
 app.get('/d6', (request, response) => {
 	console.log('Calling "/d6" on the Node.js server.')
-	response.type('text/plain')
-	function RollDie () { //Rolls dics
+	function RollDie () { //Rolls dice
 		return Math.floor(Math.random() * 6 + 1)
 	}
 	const result = RollDie();
 	function Roll() {
 		console.log("roll");
 	}
-	response.send(result)
+	response.type('text/plain')
+	response.send(result.toString)
 })
 
 // Add x and y which are both passed in on the URL. 
