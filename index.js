@@ -44,15 +44,47 @@ app.get('/2plus2', (request, response) => {
 // Return rnadom number between 1 and 6.
 app.get('/d6', (request, response) => {
 	console.log('Calling "/d6" on the Node.js server.')
-	function RollDie () { //Rolls dice
+	function RollDie () { //Rolls dics
 		return Math.floor(Math.random() * 6 + 1)
 	}
-	const result = RollDie();
+	function RollDice() { //What happens when the button is pressed
+		const die1 = document.getElementById("die1");
+		const die2 = document.getElementById("die2");
+		const disSum = document.getElementById("sum");
+		const disSum2 = document.getElementById("sum2");
+	
+		const result1 = RollDie();
+		const result2 = RollDie();
+		const result3 = RollDie();
+		const result4 = RollDie();
+	
+		const sum = result1 + result2
+		const sum2 = result3 + result4
+	
+		die1.innerHTML = result1;
+		die2.innerHTML = result2;
+		disSum.innerHTML = "Your sum: "+ sum;
+		disSum2.innerHTML = "Computer sum: "+ sum2;
+	
+		//Compare the numbers to see if the user wins
+		if (sum > sum2) {
+			document.querySelector("h1").innerHTML = "You win!";
+				} 
+	
+		if (sum < sum2) {
+			document.querySelector("h1").innerHTML = "You lose. Try again!";
+				}
+	
+		if (sum == sum2) {
+			document.querySelector("h1").innerHTML = "Draw!";
+				}
+		}
+	
 	function Roll() {
 		console.log("roll");
 	}
 	response.type('text/plain')
-	response.send(result.toString)
+	response.send(sum.toString)
 })
 
 // Add x and y which are both passed in on the URL. 
