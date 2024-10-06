@@ -16,6 +16,10 @@
 <div id="fetch-2plus2-result"></div>
 <br><br>
 
+<button type="button" onclick="rolldice()">Roll Dice</button>
+<div id="diceroll-result"></div>
+<br><br>
+
 Add two integers on the Node.js server.<br />
 <select onchange="addTwoIntegers()" id="x-value">
 	<option>1</option>
@@ -54,6 +58,14 @@ Add two integers on the Node.js server.<br />
 		const response = await fetch("/2plus2")
 		const responseText = await response.text()
 		document.getElementById("fetch-2plus2-result").innerHTML = responseText + " ("+fetch2plus2Counter+")"
+	}
+
+	let rollcounter = 0
+	async function rolldice() {
+		rollcounter++
+		const response = await fetch("/d6")
+		const responseText = await response.text()
+		document.getElementById("diceroll-result").innerHTML = responseText + " ("+rollcounter+")"
 	}
 
 	async function addTwoIntegers() {
