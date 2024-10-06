@@ -45,8 +45,14 @@ app.get('/2plus2', (request, response) => {
 app.get('/d6', (request, response) => {
 	console.log('Calling "/d6" on the Node.js server.')
 	response.type('text/plain')
-	let roll = Math.floor(Math.random() * 6 + 1)
-	response.send(roll.toString)
+	function RollDie () { //Rolls dics
+		return Math.floor(Math.random() * 6 + 1)
+	}
+	const result = RollDie();
+	function Roll() {
+		console.log("roll");
+	}
+	response.send(result)
 })
 
 // Add x and y which are both passed in on the URL. 
